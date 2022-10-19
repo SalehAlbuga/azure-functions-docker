@@ -6,7 +6,7 @@
 trigger:
   branches:
     include:
-      - refs/tags/3.0.*
+      - refs/tags/4.*
 
 pool:
   vmImage: ubuntu-latest
