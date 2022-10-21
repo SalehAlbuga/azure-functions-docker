@@ -6,7 +6,7 @@ ARG HOST_VERSION
 ENV PublishWithAspNetCoreTargetManifest=false
 
 RUN BUILD_NUMBER=$(echo ${HOST_VERSION} | cut -d'.' -f 3) && \
-    git clone --branch v${HOST_VERSION} https://github.com/Azure/azure-functions-host /src/azure-functions-host && \
+    git clone --branch v${HOST_VERSION} https://github.com/SalehAlbuga/azure-functions-host /src/azure-functions-host && \
     cd /src/azure-functions-host && \
     HOST_COMMIT=$(git rev-list -1 HEAD) && \
     dotnet publish -v q /p:BuildNumber=$BUILD_NUMBER /p:CommitHash=$HOST_COMMIT src/WebJobs.Script.WebHost/WebJobs.Script.WebHost.csproj -c Release --output /azure-functions-host --runtime linux-x64 && \
@@ -38,7 +38,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y nodejs
 
-# This is current not working with the .NET 6.0 image based on bullseye. Tracking here: https://github.com/Azure/azure-functions-docker/issues/451
+# This is current not working with the .NET 6.0 image based on bullseye. Tracking here: https://github.com/SalehAlbuga/azure-functions-docker/issues/451
 # Chrome headless dependencies
 # https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#chrome-headless-doesnt-launch-on-unix
 #RUN apt-get install -y xvfb gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 \

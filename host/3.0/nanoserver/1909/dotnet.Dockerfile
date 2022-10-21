@@ -27,7 +27,7 @@ ENV ASPNETCORE_URLS=http://+:80 `
 
 RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
     $BuildNumber = $Env:HOST_VERSION.split('.')[-1]; `
-    Invoke-WebRequest -OutFile host.zip https://github.com/Azure/azure-functions-host/archive/v$Env:HOST_VERSION.zip; `
+    Invoke-WebRequest -OutFile host.zip https://github.com/SalehAlbuga/azure-functions-host/archive/v$Env:HOST_VERSION.zip; `
     Expand-Archive host.zip .; `
     cd azure-functions-host-$Env:HOST_VERSION; `
     /dotnet/dotnet publish /p:BuildNumber=$BuildNumber /p:CommitHash=$Env:HOST_VERSION src\WebJobs.Script.WebHost\WebJobs.Script.WebHost.csproj  -c Release --output C:\runtime
