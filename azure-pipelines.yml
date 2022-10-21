@@ -19,7 +19,7 @@ steps:
   - bash: |
       # login
       set -e
-      echo $pswd | docker login -u $(dockerUsername) --password-stdin saleh.azurecr.io
+      echo $pswd | docker login -u $(dockerUsername) --password-stdin funcnext.azurecr.io
     displayName: login to registry
     continueOnError: false
     env:
@@ -30,7 +30,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet:$(Build.SourceBranchName)-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet:$(Build.SourceBranchName)-next
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_NAME"
       docker build -t $IMAGE_NAME \
                   -f host/4/bullseye/amd64/dotnet/dotnet-inproc/dotnet.Dockerfile \
@@ -41,7 +41,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet:$(Build.SourceBranchName)-slim-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet:$(Build.SourceBranchName)-slim-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
@@ -53,7 +53,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet:$(Build.SourceBranchName)-appservice-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet:$(Build.SourceBranchName)-appservice-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
@@ -65,7 +65,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated6.0-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated6.0-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
@@ -77,7 +77,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated6.0-slim-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated6.0-slim-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
@@ -89,7 +89,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated6.0-appservice-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated6.0-appservice-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
@@ -101,7 +101,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated7.0-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated7.0-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
@@ -113,7 +113,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated7.0-slim-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated7.0-slim-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
@@ -125,7 +125,7 @@ steps:
     continueOnError: false
   - bash: |
       set -e
-      IMAGE_NAME=saleh.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated7.0-appservice-next
+      IMAGE_NAME=funcnext.azurecr.io/azure-functions/4/dotnet-isolated:$(Build.SourceBranchName)-dotnet-isolated7.0-appservice-next
       IMAGE_ARRAY="$(image_list),$IMAGE_NAME"
       echo "##vso[task.setvariable variable=image_list;]$IMAGE_ARRAY"
       docker build -t $IMAGE_NAME \
